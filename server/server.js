@@ -104,7 +104,7 @@ const PORT = process.env.PORT || 5000;
 
 (async () => {
   try {
-    //await connectDB();
+    await connectDB();
     //initCloudinary();
 
     server.listen(PORT, "0.0.0.0", () => {
