@@ -1,6 +1,5 @@
 const http = require("http");
 const express = require("express");
-const dotenv = require("dotenv");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const helmet = require("helmet");
@@ -20,7 +19,11 @@ const adminRoutes = require("./routes/adminRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
 const userRoutes = require("./routes/userRoutes");
 
-dotenv.config();
+if (process.env.NODE_ENV !== "production") {
+  // Load local env only in development
+  // eslint-disable-next-line global-require
+  require("dotenv").config();
+}
 
 const app = express();
 const server = http.createServer(app);
